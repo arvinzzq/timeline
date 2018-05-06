@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.config');
 
 module.exports = merge(baseWebpackConfig, {
@@ -15,9 +14,6 @@ module.exports = merge(baseWebpackConfig, {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    }),
-    new CleanWebpackPlugin('dist/*.*', {
-      root: process.cwd()
     }),
     new UglifyJsPlugin()
   ]
