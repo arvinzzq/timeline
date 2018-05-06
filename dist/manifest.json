@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Timeline",
+  "description": "时间的线",
+  "version": "0.0.1",
+  "browser_action": {
+    "default_icon": "src/icons/timeline.png",
+    "default_popup": "build/popup.html",
+    "default_title": "时间的线"
+  },
+  "permissions": [
+    "storage"
+  ]
+}

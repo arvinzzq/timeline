@@ -44,11 +44,6 @@
 /******/ 		}
 /******/ 	};
 /******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -64,24 +59,21 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/background_scripts/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./src/background_scripts/index.js":
+/******/ ([
+/* 0 */
 /*!*****************************************!*\
   !*** ./src/background_scripts/index.js ***!
   \*****************************************/
 /*! no static exports found */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nconsole.log('hello background scripts ~');//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvYmFja2dyb3VuZF9zY3JpcHRzL2luZGV4LmpzLmpzIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vL3NyYy9iYWNrZ3JvdW5kX3NjcmlwdHMvaW5kZXguanM/NjQxZSJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmxvZygnaGVsbG8gYmFja2dyb3VuZCBzY3JpcHRzIH4nKTsiXSwibWFwcGluZ3MiOiI7O0FBQUEiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/background_scripts/index.js\n");
+eval("\n\nconsole.log('hello background scripts ~');//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9zcmMvYmFja2dyb3VuZF9zY3JpcHRzL2luZGV4LmpzPzZkYjAiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc29sZS5sb2coJ2hlbGxvIGJhY2tncm91bmQgc2NyaXB0cyB+Jyk7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIHNyYy9iYWNrZ3JvdW5kX3NjcmlwdHMvaW5kZXguanMiXSwibWFwcGluZ3MiOiI7O0FBQUEiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///0\n");
 
 /***/ })
-
-/******/ });
+/******/ ]);

@@ -3,7 +3,7 @@ const path = require('path');
 const entryPath = path.resolve(__dirname, '../src')
 
 const entries = fs.readdirSync(entryPath).reduce(((resEntries, dirPath) => {
-  if (!/icons|lib/.test(dirPath)) {
+  if (!/icons|lib|^\./.test(dirPath)) {
     resEntries[dirPath] = path.resolve(entryPath, dirPath);
   }
   return resEntries;
