@@ -8,6 +8,8 @@ else
   elif [[ "$1" == "prod" ]]; then
     mode="dist"
   fi
+  # ensure dir exists.
+  mkdir -p $mode
   rm -rf $mode/*
   cp src/manifest.json $mode
 
