@@ -1,6 +1,7 @@
 import React, {PureComponent, Component} from 'react';
 import ReactDOM from 'react-dom';
 import TaskItem from './components/TaskItem';
+import IconAdd from './images/add.svg';
 import './popup.scss';
 
 const listTasks = [{
@@ -44,7 +45,11 @@ class App extends (PureComponent || Component) {
     <div
       className="button-timeline--bottom"
     >
-      添加任务
+    <img
+      className="icon--add"
+      src={IconAdd}
+    />
+      New Task
     </div>
   )
   render() {

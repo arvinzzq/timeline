@@ -33,12 +33,17 @@
     border-top: 1px solid rgba(230, 230, 230, 0.5);
     color: rgb(61, 168, 245);
     font-size: 15px;
-    line-height: 48px;
+    line-height: 50px;
     padding: 0 15px;
     box-sizing: border-box;
     cursor: pointer;
     &:hover {
       background-color: #f0f0f0;
+    }
+    .icon--add {
+      width: 15px;
+      margin-right: 5px;
+      vertical-align: text-bottom;
     }
   }
 }

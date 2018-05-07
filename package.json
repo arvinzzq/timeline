@@ -30,6 +30,7 @@
     "sass-loader": "^7.0.1",
     "style-loader": "^0.20.3",
     "uglifyjs-webpack-plugin": "^1.2.5",
+    "url-loader": "^1.0.1",
     "webpack": "^3.3.0",
     "webpack-merge": "^4.1.2"
   },
