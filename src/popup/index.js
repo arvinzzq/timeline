@@ -5,28 +5,61 @@ import IconAdd from './images/add.svg';
 import './popup.scss';
 
 const listTasks = [{
-  title: '嘿嘿嘿1'
+  title: '嘿嘿嘿1',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525790828895
 }, {
-  title: '嘿嘿嘿2'
+  title: '嘿嘿嘿2',
+  color: '#0e0',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿3'
+  title: '嘿嘿嘿3',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿4'
+  title: '嘿嘿嘿4',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿5'
+  title: '嘿嘿嘿5',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿6'
+  title: '嘿嘿嘿6',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿7'
+  title: '嘿嘿嘿7',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿8'
+  title: '嘿嘿嘿8',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿9'
+  title: '嘿嘿嘿9',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿10'
+  title: '嘿嘿嘿10',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
 }, {
-  title: '嘿嘿嘿11'
-}]
+  title: '嘿嘿嘿11',
+  color: '#e00',
+  beginTime: 1525757128895,
+  endTime: 1525797828895
+}];
 
 class App extends (PureComponent || Component) {
   renderTaskList = () => (
@@ -37,6 +70,9 @@ class App extends (PureComponent || Component) {
         <TaskItem
           key={String(item.title)}
           title={item.title}
+          color={item.color}
+          beginTime={item.beginTime}
+          endTime={item.endTime}
         />
       ))}
     </div>

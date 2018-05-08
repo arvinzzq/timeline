@@ -17,9 +17,22 @@
       cursor: pointer;
       box-shadow: 0 0 4px rgba(0,0,0,.1), 0 0 4px rgba(0,0,0,.1);
       transition: all .2s ease-in-out;
+      padding: 10px;
+      box-sizing: border-box;
       &:hover {
         transform: scale(1.05);
         box-shadow: 0 1px 4px rgba(0,0,0,.2), 0 -1px 4px rgba(0,0,0,.2);
+      }
+      .item {
+        &__title {
+          height: 50%;
+          line-height: 25px;
+        }
+        &__progress-bar {
+          height: 50%;
+          width: 100%;
+          position: relative;
+        }
       }
     }
   }
