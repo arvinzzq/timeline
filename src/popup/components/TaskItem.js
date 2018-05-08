@@ -11,21 +11,33 @@ export default class TaskItem extends (PureComponent || Component) {
     endTime: PropTypes.number.isRequired
   };
 
-  handleCheck = () => {
+  state = {
+    disabled: false
+  }
+
+  handleCheck = (e) => {
     console.log('checkbox is clicked ~');
+    this.setState({
+      disabled: e.target.checked
+    });
   }
 
   render() {
+    const { disabled } = this.state;
     const { title, color, beginTime, endTime } = this.props;
     return (
       <div
-        className="item-task"
+        className={`item-task${disabled ? ' task--done' : ''}`}
       >
         <div
           className="item__title"
         >
           <Checkbox onChange={this.handleCheck}>
-            {title}
+            <span
+              className="title__content"
+            >
+              {title}
+            </span>
           </Checkbox>
         </div>
         <div

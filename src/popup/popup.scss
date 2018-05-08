@@ -23,6 +23,27 @@
         transform: scale(1.05);
         box-shadow: 0 1px 4px rgba(0,0,0,.2), 0 -1px 4px rgba(0,0,0,.2);
       }
+      &.task--done {
+        opacity: 0.3;
+        .item__title {
+          .ant-checkbox-inner {
+            width: 20px;
+            height: 20px;
+            background-color: inherit;
+            border-color: rgba(0, 0, 0, 0.45);;
+            &:after {
+              left: 6px;
+              top: 2px;
+              width: 7px;
+              height: 11px;
+              border-color: rgba(0, 0, 0, 0.45);
+            }
+          }
+          .title__content {
+            text-decoration: line-through;
+          }
+        }
+      }
       .item {
         &__title {
           height: 50%;
