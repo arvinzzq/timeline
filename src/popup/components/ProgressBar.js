@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const calcProgress = (beginTime, endTime) => `${(100 * ((new Date()).getTime() - beginTime) /
-   (endTime - beginTime)).toFixed(2)}%`
+const calcProgress = (beginTime, endTime) => {
+  const date = (new Date()).getTime();
+  const percentProgress = (100 * (date - beginTime) /
+  (endTime - beginTime)).toFixed(2);
+  return `${percentProgress < 100 ? percentProgress : 100}%`
+}
 
 const getStyleProgressBarWrap = (height) => ({
   height,
