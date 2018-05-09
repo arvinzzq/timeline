@@ -2,7 +2,7 @@ import React, {PureComponent, Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, Button } from 'antd';
 import TaskItem from './TaskItem';
-import NewTaskBoard from './NewTaskBoard';
+import NewTaskForm from './NewTaskForm';
 import IconAdd from '../images/add.svg';
 
 const listTasks = [{
@@ -73,16 +73,14 @@ export default class TaskBoard extends (PureComponent || Component) {
     });
   };
 
-  handleNewTaskOk = () => {
+  handleNewTaskCancel = () => {
     this.setState({
       visible: false
     });
   };
 
-  handleNewTaskCancel = () => {
-    this.setState({
-      visible: false
-    });
+  getNewTaskForm = (newTaskForm) => {
+    this.newTaskForm = newTaskForm;
   };
 
   renderTaskList = () => (
@@ -116,7 +114,7 @@ export default class TaskBoard extends (PureComponent || Component) {
     const { visible } = this.state;
     return (
       <div
-        className="container-timeline"
+        className={`container-timeline clearfix${visible ? ' timeline--open' : ''}`}
       >
         <div
           className="board-task"
@@ -127,12 +125,12 @@ export default class TaskBoard extends (PureComponent || Component) {
         <Modal
           title="New Task"
           visible={visible}
-          onOk={this.handleNewTaskOk}
           onCancel={this.handleNewTaskCancel}
+          footer={null}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <NewTaskForm
+            ref={this.getNewTaskForm}
+          />
         </Modal>
       </div>
     )

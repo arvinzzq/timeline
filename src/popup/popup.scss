@@ -1,85 +1,104 @@
-.board-task {
-  position: relative;
-  width: 300px;
-  padding-bottom: 50px;
-  border: 1px solid #eee;
-  border-radius: 3px;
-  .list-task {
-    box-sizing: border-box;
-    padding: 0 10px 15px 10px;
-    max-height: 400px;
-    min-height: 200px;
-    overflow-y: auto;
-    .item-task {
-      margin-top: 15px;
-      height: 70px;
-      border-radius: 3px;
-      cursor: pointer;
-      box-shadow: 0 0 4px rgba(0,0,0,.1), 0 0 4px rgba(0,0,0,.1);
-      transition: all .2s ease-in-out;
-      padding: 10px;
+.container-timeline {
+  transition: min-width .3s ease-in-out;
+  min-width: 300px;
+  &.timeline--open {
+    min-width: 580px;
+  }
+  .board-task {
+    margin: 0 auto;
+    position: relative;
+    width: 300px;
+    padding-bottom: 50px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    .list-task {
       box-sizing: border-box;
-      &:hover {
-        transform: scale(1.05);
-        box-shadow: 0 1px 4px rgba(0,0,0,.2), 0 -1px 4px rgba(0,0,0,.2);
-      }
-      &.task--done {
-        opacity: 0.3;
-        .item__title {
-          .ant-checkbox-inner {
-            width: 20px;
-            height: 20px;
-            background-color: inherit;
-            border-color: rgba(0, 0, 0, 0.45);;
-            &:after {
-              left: 6px;
-              top: 2px;
-              width: 7px;
-              height: 11px;
-              border-color: rgba(0, 0, 0, 0.45);
+      padding: 0 10px 15px 10px;
+      max-height: 400px;
+      min-height: 200px;
+      overflow-y: auto;
+      .item-task {
+        margin-top: 15px;
+        height: 70px;
+        border-radius: 3px;
+        cursor: pointer;
+        box-shadow: 0 0 4px rgba(0,0,0,.1), 0 0 4px rgba(0,0,0,.1);
+        transition: all .2s ease-in-out;
+        padding: 10px;
+        box-sizing: border-box;
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 1px 4px rgba(0,0,0,.2), 0 -1px 4px rgba(0,0,0,.2);
+        }
+        &.task--done {
+          opacity: 0.3;
+          .item__title {
+            .ant-checkbox-inner {
+              width: 20px;
+              height: 20px;
+              background-color: inherit;
+              border-color: rgba(0, 0, 0, 0.45);;
+              &:after {
+                left: 6px;
+                top: 2px;
+                width: 7px;
+                height: 11px;
+                border-color: rgba(0, 0, 0, 0.45);
+              }
+            }
+            .title__content {
+              text-decoration: line-through;
             }
           }
-          .title__content {
-            text-decoration: line-through;
+        }
+        .item {
+          &__title {
+            height: 50%;
+            line-height: 25px;
+          }
+          &__progress-bar {
+            height: 50%;
+            width: 100%;
+            position: relative;
           }
         }
       }
-      .item {
-        &__title {
-          height: 50%;
-          line-height: 25px;
-        }
-        &__progress-bar {
-          height: 50%;
-          width: 100%;
-          position: relative;
-        }
+    }
+    .button-timeline--bottom {
+      position: absolute;
+      bottom: 0px;
+      height: 50px;
+      width: 100%;
+      transition: background .3s linear;
+      background-color: #fafafa;
+      border-top: 1px solid rgba(230, 230, 230, 0.5);
+      color: rgb(61, 168, 245);
+      font-size: 15px;
+      line-height: 50px;
+      padding: 0 15px;
+      box-sizing: border-box;
+      cursor: pointer;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+      .icon--add {
+        width: 15px;
+        margin-right: 5px;
+        vertical-align: text-bottom;
       }
     }
   }
-  .button-timeline--bottom {
-    position: absolute;
-    bottom: 0px;
-    height: 50px;
-    width: 100%;
-    transition: background .3s linear;
-    background-color: #fafafa;
-    border-top: 1px solid rgba(230, 230, 230, 0.5);
-    color: rgb(61, 168, 245);
-    font-size: 15px;
-    line-height: 50px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    cursor: pointer;
-    &:hover {
-      background-color: #f0f0f0;
-    }
-    .icon--add {
-      width: 15px;
-      margin-right: 5px;
-      vertical-align: text-bottom;
-    }
-  }
+}
+
+.clearfix:before,.clearfix:after {
+  content:"";
+  display:table;
+}
+.clearfix:after {
+  clear:both;
+}/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+  zoom:1;
 }
 
 // tiny scroll bar
