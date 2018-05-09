@@ -12,12 +12,13 @@ class NewTaskForm extends (PureComponent || Component) {
       if (err) {
         return;
       }
-      const rangeValue = fieldsValue['range-picker'];
+      const rangeValue = fieldsValue['timeRange'];
       const values = {
         ...fieldsValue,
-        'range-picker': [rangeValue[0].format('YYYY-MM-DD'), rangeValue[1].format('YYYY-MM-DD')],
+        'timeRange': [rangeValue[0].unix(), rangeValue[1].unix()],
       };
       console.log('Received values of form: ', values);
+      this.props.form.resetFields();
     });
   };
 
@@ -74,7 +75,7 @@ class NewTaskForm extends (PureComponent || Component) {
           {...formItemLayout}
           label="Time Range"
         >
-          {getFieldDecorator('range-picker', rangeConfig)(
+          {getFieldDecorator('timeRange', rangeConfig)(
             <RangePicker />
           )}
         </FormItem>
