@@ -48,7 +48,7 @@ class NewTaskForm extends (PureComponent || Component) {
     this.props.handleCancel();
   }
 
-  disabledDate = current => (current < moment().endOf('day'));
+  disabledDate = current => (current < moment().startOf('day'));
 
   render() {
     const { getFieldDecorator } = this.props.form;
