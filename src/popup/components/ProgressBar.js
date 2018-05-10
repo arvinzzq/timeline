@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const calcProgress = (beginTime, endTime) => {
-  const date = (new Date()).getTime();
+  const date = ((new Date()).getTime() / 1000).toFixed(0);
+  if (date < beginTime) {
+    return '0%';
+  } else if (date > endTime) {
+    return '100%'
+  }
   const percentProgress = (100 * (date - beginTime) /
   (endTime - beginTime)).toFixed(2);
   return `${percentProgress < 100 ? percentProgress : 100}%`

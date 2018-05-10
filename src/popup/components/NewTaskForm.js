@@ -1,11 +1,24 @@
 import React, {PureComponent, Component} from 'react';
 import PropTypes from 'prop-types';
-import { Form, DatePicker, Input, Button } from 'antd';
+import { Form, DatePicker, Input, Button, message } from 'antd';
+import moment from 'moment';
 import ColorPickerFormItem from './ColorPickerFormItem';
+import { popupStorage, objPick } from '../../lib/utils';
 const FormItem = Form.Item;
 const RangePicker = DatePicker.RangePicker;
+const noop = () => {};
 
 class NewTaskForm extends (PureComponent || Component) {
+  static propTypes = {
+    handleOk: PropTypes.func,
+    handleCancel: PropTypes.func
+  };
+
+  static defaultProps = {
+    handleOk: noop,
+    handleCancel: noop
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, fieldsValue) => {
@@ -15,12 +28,24 @@ class NewTaskForm extends (PureComponent || Component) {
       const rangeValue = fieldsValue['timeRange'];
       const values = {
         ...fieldsValue,
-        'timeRange': [rangeValue[0].unix(), rangeValue[1].unix()],
+        beginTime: rangeValue[0].unix(),
+        endTime: rangeValue[1].unix()
       };
-      console.log('Received values of form: ', values);
+      const listTasks = popupStorage.getItem('listTasks') || [];
+      listTasks.push(objPick(values, ['color', 'title', 'beginTime', 'endTime']));
+      popupStorage.setItem('listTasks', listTasks);
+      message.success('Task is successfully created.');
       this.props.form.resetFields();
+      this.props.handleOk();
     });
   };
+
+  handleCancel = () => {
+    this.props.form.resetFields();
+    this.props.handleCancel();
+  }
+
+  disabledDate = current => (current < moment().endOf('day'));
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -76,7 +101,9 @@ class NewTaskForm extends (PureComponent || Component) {
           label="Time Range"
         >
           {getFieldDecorator('timeRange', rangeConfig)(
-            <RangePicker />
+            <RangePicker
+              disabledDate={this.disabledDate}
+            />
           )}
         </FormItem>
         <div
@@ -89,6 +116,7 @@ class NewTaskForm extends (PureComponent || Component) {
             htmlType="submit">提交</Button>
           <Button
             style={{ marginLeft: 10 }}
+            onClick={this.handleCancel}
             htmlType="button">取消</Button>
         </div>
       </Form>

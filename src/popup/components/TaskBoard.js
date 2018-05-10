@@ -3,69 +3,22 @@ import ReactDOM from 'react-dom';
 import { Modal, Button } from 'antd';
 import TaskItem from './TaskItem';
 import NewTaskForm from './NewTaskForm';
+import { popupStorage } from '../../lib/utils';
 import IconAdd from '../images/add.svg';
-
-const listTasks = [{
-  title: '嘿嘿嘿1',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525790828895
-}, {
-  title: '嘿嘿嘿2',
-  color: '#0e0',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿3',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿4',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿5',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿6',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿7',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿8',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿9',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿10',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}, {
-  title: '嘿嘿嘿11',
-  color: '#e00',
-  beginTime: 1525757128895,
-  endTime: 1525797828895
-}];
+import ImgEmpty from '../images/empty.svg';
 
 export default class TaskBoard extends (PureComponent || Component) {
   state = {
-    visible: false
+    visible: false,
+    listTasks: []
   };
+
+  componentDidMount() {
+    console.log('popup list tasks: ', popupStorage.getItem('listTasks'))
+    this.setState({
+      listTasks: popupStorage.getItem('listTasks') || []
+    })
+  }
 
   handleButtonClick = () => {
     this.setState({
@@ -79,25 +32,29 @@ export default class TaskBoard extends (PureComponent || Component) {
     });
   };
 
-  getNewTaskForm = (newTaskForm) => {
-    this.newTaskForm = newTaskForm;
-  };
-
-  renderTaskList = () => (
-    <div
-      className="list-task"
-    >
-      {listTasks.map((item) => (
-        <TaskItem
-          key={String(item.title)}
-          title={item.title}
-          color={item.color}
-          beginTime={item.beginTime}
-          endTime={item.endTime}
-        />
-      ))}
-    </div>
-  )
+  renderTaskList = () => {
+    const { listTasks } = this.state;
+    return (
+      <div
+        className="list-task"
+      >
+        {listTasks.length ? listTasks.map((item) => (
+          <TaskItem
+            key={String(item.title)}
+            title={item.title}
+            color={item.color}
+            beginTime={item.beginTime}
+            endTime={item.endTime}
+          />
+        )) : (
+          <img
+            className="image-no-task"
+            src={ImgEmpty}
+          />
+        )}
+      </div>
+    );
+  }
   renderBottomButton = () => (
     <div
       className="button-timeline--bottom"
@@ -129,7 +86,8 @@ export default class TaskBoard extends (PureComponent || Component) {
           footer={null}
         >
           <NewTaskForm
-            ref={this.getNewTaskForm}
+            handleOk={this.handleNewTaskCancel}
+            handleCancel={this.handleNewTaskCancel}
           />
         </Modal>
       </div>
