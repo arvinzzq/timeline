@@ -1,6 +1,6 @@
 import React, {PureComponent, Component} from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox } from 'antd';
+import { Checkbox, Tooltip } from 'antd';
 import ProgressBar from './ProgressBar';
 import { popupStorage } from '../../lib/utils';
 import IconClose from '../images/close.svg';
@@ -54,11 +54,17 @@ export default class TaskItem extends (PureComponent || Component) {
           <Checkbox
             defaultChecked={status}
             onChange={this.handleCheck}>
-            <span
-              className="title__content"
+            <Tooltip
+              placement="top"
+              title={title}
+              mouseEnterDelay={1}
             >
-              {title}
-            </span>
+              <span
+                className="title__content text-ellipsis"
+              >
+                {title}
+              </span>
+            </Tooltip>
           </Checkbox>
         </div>
         <div

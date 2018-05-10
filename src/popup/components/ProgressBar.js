@@ -1,5 +1,7 @@
 import React from 'react';
+import { Tooltip } from 'antd';
 import PropTypes from 'prop-types';
+import { convertTimeStampToDate } from '../../lib/utils';
 
 const calcProgress = (beginTime, endTime) => {
   const date = ((new Date()).getTime() / 1000).toFixed(0);
@@ -12,6 +14,9 @@ const calcProgress = (beginTime, endTime) => {
   (endTime - beginTime)).toFixed(2);
   return `${percentProgress < 100 ? percentProgress : 100}%`
 }
+
+const calcTimeRangeStr = (beginTime, endTime) => `${convertTimeStampToDate(beginTime * 1000, 'date')} 
+~ ${convertTimeStampToDate(endTime * 1000, 'date')}`;
 
 const getStyleProgressBarWrap = (height) => ({
   height,
@@ -33,19 +38,25 @@ const ProgressBar = ({ style, color, beginTime, endTime, height }) => (
       ...style
     }}
   >
-    <div
-      style={getStyleProgressBarOuter()}
+    <Tooltip
+      placement="top"
+      title={calcTimeRangeStr(beginTime, endTime)}
+      mouseEnterDelay={1}
     >
       <div
-        style={{
-          backgroundColor: color,
-          width: calcProgress(beginTime, endTime),
-          height: '100%',
-          borderRadius: '3px'
-        }}
+        style={getStyleProgressBarOuter()}
       >
+        <div
+          style={{
+            backgroundColor: color,
+            width: calcProgress(beginTime, endTime),
+            height: '100%',
+            borderRadius: '3px'
+          }}
+        >
+        </div>
       </div>
-    </div>
+    </Tooltip>
   </div>
 );
 

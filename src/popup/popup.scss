@@ -80,6 +80,14 @@
           &__title {
             height: 50%;
             line-height: 25px;
+            .title__content {
+              display: inline-block;
+              width: 210px;
+              font-size: 12px;
+              line-height: 12px;
+              position: relative;
+              top: 2px;
+            }
           }
           &__progress-bar {
             height: 50%;
@@ -113,6 +121,12 @@
       }
     }
   }
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .clearfix:before,.clearfix:after {

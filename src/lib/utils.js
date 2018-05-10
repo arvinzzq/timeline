@@ -24,7 +24,27 @@ const popupStorage = {
   }
 }
 
+const timeUnitFormat = item => `0${item}`.substr(-2);
+
+const convertTimeStampToDate = (timestamp, type) => {
+  const date = new Date(timestamp)
+  let dateStr;
+  switch(type) {
+    case 'date':
+      dateStr = `${date.getFullYear()}-${timeUnitFormat(date.getMonth() + 1)}-${timeUnitFormat(date.getDate())}`;
+      break;
+    case 'datetime':
+      dateStr = `${date.getFullYear()}-${timeUnitFormat(date.getMonth() + 1)}-${timeUnitFormat(date.getDate())}
+      ${timeUnitFormat(date.getHours())}:${timeUnitFormat(date.getMinutes())}:${timeUnitFormat(date.getSeconds())}`;
+      break;
+    default:
+      // do nothing
+  }
+  return dateStr;
+};
+
 export {
   objPick,
-  popupStorage
+  popupStorage,
+  convertTimeStampToDate
 }
