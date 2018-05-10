@@ -116,11 +116,11 @@ class NewTaskForm extends (PureComponent || Component) {
         >
           <Button
             type="primary"
-            htmlType="submit">提交</Button>
+            htmlType="submit">Confirm</Button>
           <Button
             style={{ marginLeft: 10 }}
             onClick={this.handleCancel}
-            htmlType="button">取消</Button>
+            htmlType="button">Cancel</Button>
         </div>
       </Form>
     );
