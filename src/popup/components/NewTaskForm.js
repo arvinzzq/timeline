@@ -32,7 +32,10 @@ class NewTaskForm extends (PureComponent || Component) {
         endTime: rangeValue[1].unix()
       };
       const listTasks = popupStorage.getItem('listTasks') || [];
-      listTasks.push(objPick(values, ['color', 'title', 'beginTime', 'endTime']));
+      listTasks.push({
+        ...objPick(values, ['color', 'title', 'beginTime', 'endTime']),
+        status: 0
+      });
       popupStorage.setItem('listTasks', listTasks);
       message.success('Task is successfully created.');
       this.props.form.resetFields();

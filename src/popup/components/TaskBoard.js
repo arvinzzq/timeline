@@ -14,10 +14,7 @@ export default class TaskBoard extends (PureComponent || Component) {
   };
 
   componentDidMount() {
-    console.log('popup list tasks: ', popupStorage.getItem('listTasks'))
-    this.setState({
-      listTasks: popupStorage.getItem('listTasks') || []
-    })
+    this.refreshBoard();
   }
 
   handleButtonClick = () => {
@@ -32,19 +29,35 @@ export default class TaskBoard extends (PureComponent || Component) {
     });
   };
 
+  handleNewTaskOk = () => {
+    this.setState({
+      visible: false
+    });
+    this.refreshBoard();
+  }
+
+  refreshBoard = () => {
+    this.setState({
+      listTasks: popupStorage.getItem('listTasks') || []
+    })
+  };
+
   renderTaskList = () => {
     const { listTasks } = this.state;
     return (
       <div
         className="list-task"
       >
-        {listTasks.length ? listTasks.map((item) => (
+        {listTasks.length ? listTasks.map((item, index) => (
           <TaskItem
-            key={String(item.title)}
+            key={`${item.title}-${index}`}
+            index={index}
             title={item.title}
             color={item.color}
             beginTime={item.beginTime}
             endTime={item.endTime}
+            status={item.status}
+            itemUpdate={this.refreshBoard}
           />
         )) : (
           <img
@@ -86,7 +99,7 @@ export default class TaskBoard extends (PureComponent || Component) {
           footer={null}
         >
           <NewTaskForm
-            handleOk={this.handleNewTaskCancel}
+            handleOk={this.handleNewTaskOk}
             handleCancel={this.handleNewTaskCancel}
           />
         </Modal>
