@@ -15,8 +15,8 @@ const calcProgress = (beginTime, endTime) => {
   return `${percentProgress < 100 ? percentProgress : 100}%`
 }
 
-const calcTimeRangeStr = (beginTime, endTime) => `${convertTimeStampToDate(beginTime * 1000, 'date')} 
-~ ${convertTimeStampToDate(endTime * 1000, 'date')}`;
+const calcTimeRangeStr = (beginTime, endTime) => `${convertTimeStampToDate(beginTime * 1000, 'datetime')} 
+~ ${convertTimeStampToDate(endTime * 1000, 'datetime')}`;
 
 const getStyleProgressBarWrap = (height) => ({
   height,
@@ -40,7 +40,7 @@ const ProgressBar = ({ style, color, beginTime, endTime, height }) => (
   >
     <Tooltip
       placement="top"
-      title={calcTimeRangeStr(beginTime, endTime)}
+      title={`${calcTimeRangeStr(beginTime, endTime)} - ${calcProgress(beginTime, endTime)}`}
       mouseEnterDelay={1}
     >
       <div
