@@ -48,7 +48,7 @@ class NewTaskForm extends (PureComponent || Component) {
     this.props.handleCancel();
   }
 
-  disabledDate = current => (current < moment().startOf('day'));
+  // disabledDate = current => (current < moment().startOf('day'));
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -104,9 +104,7 @@ class NewTaskForm extends (PureComponent || Component) {
           label="Time Range"
         >
           {getFieldDecorator('timeRange', rangeConfig)(
-            <RangePicker
-              disabledDate={this.disabledDate}
-            />
+            <RangePicker />
           )}
         </FormItem>
         <div
