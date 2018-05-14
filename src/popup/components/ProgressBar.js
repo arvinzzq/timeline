@@ -13,7 +13,7 @@ const calcProgress = (beginTime, endTime) => {
   const percentProgress = (100 * (date - beginTime) /
   (endTime - beginTime)).toFixed(2);
   return `${percentProgress < 100 ? percentProgress : 100}%`
-}
+};
 
 const calcTimeRangeStr = (beginTime, endTime) => `${convertTimeStampToDate(beginTime * 1000, 'date')} 
 ~ ${convertTimeStampToDate(endTime * 1000, 'date')}`;

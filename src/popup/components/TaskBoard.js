@@ -34,7 +34,7 @@ export default class TaskBoard extends (PureComponent || Component) {
       visible: false
     });
     this.refreshBoard();
-  }
+  };
 
   refreshBoard = () => {
     this.setState({
@@ -67,7 +67,8 @@ export default class TaskBoard extends (PureComponent || Component) {
         )}
       </div>
     );
-  }
+  };
+
   renderBottomButton = () => (
     <div
       className="button-timeline--bottom"
@@ -79,7 +80,8 @@ export default class TaskBoard extends (PureComponent || Component) {
     />
       New Task
     </div>
-  )
+  );
+  
   render() {
     const { visible } = this.state;
     return (

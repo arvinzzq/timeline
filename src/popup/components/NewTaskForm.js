@@ -46,7 +46,7 @@ class NewTaskForm extends (PureComponent || Component) {
   handleCancel = () => {
     this.props.form.resetFields();
     this.props.handleCancel();
-  }
+  };
 
   // disabledDate = current => (current < moment().startOf('day'));
 
