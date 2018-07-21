@@ -19,6 +19,12 @@ npm run prod
 
 dist folder is production version of chrome extension, which can be released.
 
-# Prototype
+# Demo
 
-![Prototype of timeline](./Timeline.png)
+<p align="center">
+  <img src="./demo1.png" width="350px">
+</p>
+
+<p align="center">
+  <img src="./demo2.png" width="600px">
+</p>
